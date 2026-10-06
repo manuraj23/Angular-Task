@@ -1,0 +1,31 @@
+.login-container {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #f5f7fa;
+}
+
+.login-card {
+  width: 400px;
+  padding: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.login-button {
+  width: 100%;
+  margin-top: 20px;
+  height: 45px;
+}
+
+.error-message {
+  color: #d32f2f;
+  margin-top: 10px;
+  text-align: center;
+}

@@ -1,0 +1,122 @@
+<mat-card>
+
+  <h1>
+    Create Employee
+  </h1>
+
+
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="createUser()"
+  >
+
+    <!-- Name -->
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>
+        Name
+      </mat-label>
+
+      <input
+        matInput
+        formControlName="name"
+      >
+
+    </mat-form-field>
+
+
+    <!-- Username -->
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>
+        Username
+      </mat-label>
+
+      <input
+        matInput
+        formControlName="username"
+      >
+
+    </mat-form-field>
+
+
+    <!-- Password -->
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>
+        Password
+      </mat-label>
+
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+      >
+
+    </mat-form-field>
+
+
+    <!-- Role -->
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>
+        Role
+      </mat-label>
+
+      <mat-select formControlName="role">
+
+        <mat-option value="TEAM_LEAD">
+          Team Lead
+        </mat-option>
+
+        <mat-option value="TEAM_MEMBER">
+          Team Member
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    @if (errorMessage) {
+
+      <p style="color: red">
+        {{ errorMessage }}
+      </p>
+
+    }
+
+
+    @if (message) {
+
+      <p style="color: green">
+        {{ message }}
+      </p>
+
+    }
+
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+    >
+      Create User
+    </button>
+
+
+    <button
+      mat-button
+      type="button"
+      (click)="backToDashboard()"
+    >
+      Back
+    </button>
+
+  </form>
+
+</mat-card>

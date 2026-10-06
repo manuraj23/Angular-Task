@@ -1,0 +1,67 @@
+<mat-toolbar class="topbar" aria-label="Primary navigation">
+	<a class="brand" href="#home" aria-label="Jira">
+		<span class="brand-mark" aria-hidden="true">J</span>
+		<span>Jira</span>
+	</a>
+
+	<nav class="nav-links" aria-label="Main navigation">
+		<a mat-button class="nav-link active" href="#home">Home</a>
+		<a mat-button class="nav-link" href="#about">About</a>
+		<a mat-button class="nav-link" href="#contact">Contact</a>
+	</nav>
+
+	<span class="toolbar-spacer"></span>
+
+	<button
+		mat-icon-button
+		class="theme-toggle"
+		type="button"
+		(click)="toggleTheme()"
+		[attr.aria-label]="isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
+		[attr.title]="isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
+	>
+		<mat-icon aria-hidden="true">{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+	</button>
+
+	<button mat-stroked-button class="profile-button" type="button" [matMenuTriggerFor]="profileMenu">
+		<mat-icon aria-hidden="true">account_circle</mat-icon>
+		<span>Profile</span>
+	</button>
+
+	<button mat-button class="logout-button" type="button">
+		<mat-icon aria-hidden="true">logout</mat-icon>
+		<span>Logout</span>
+	</button>
+
+	<mat-menu #profileMenu="matMenu" xPosition="before">
+		<button mat-menu-item type="button">
+			<mat-icon aria-hidden="true">person</mat-icon>
+			<span>View profile</span>
+		</button>
+		<button mat-menu-item type="button">
+			<mat-icon aria-hidden="true">logout</mat-icon>
+			<span>Logout</span>
+		</button>
+	</mat-menu>
+</mat-toolbar>
+
+<main class="page-content" id="home">
+	<section class="welcome-section" aria-labelledby="welcome-title">
+		<p class="eyebrow">Your workspace</p>
+		<h1 id="welcome-title">A calmer way to get things done.</h1>
+		<p class="intro">Welcome back. Pick up where you left off and keep your work moving.</p>
+	</section>
+
+	<section class="info-grid" aria-label="Company information">
+		<article id="about" class="info-panel">
+			<p class="eyebrow">About</p>
+			<h2>Built for focused teams.</h2>
+			<p>Acme brings the details your team needs into one clear, dependable workspace.</p>
+		</article>
+		<article id="contact" class="info-panel">
+			<p class="eyebrow">Contact</p>
+			<h2>We are here to help.</h2>
+			<p>Reach out to our team whenever you need a hand getting the most from Acme.</p>
+		</article>
+	</section>
+</main>

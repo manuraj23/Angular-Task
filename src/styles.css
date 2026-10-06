@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+	--surface-color: #f8fafc;
+	--panel-color: #ffffff;
+	--text-color: #172033;
+	--muted-color: #667085;
+	--line-color: #dfe5ec;
+	--accent-color: #c2410c;
+}
+
+html.dark-mode {
+	color-scheme: dark;
+	--surface-color: #111827;
+	--panel-color: #182235;
+	--text-color: #f5f7fb;
+	--muted-color: #aeb9c8;
+	--line-color: #334155;
+	--accent-color: #fb923c;
+}
+
+body {
+	background: var(--surface-color);
+	color: var(--text-color);
+	font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+}

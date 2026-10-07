@@ -1,17 +1,107 @@
-<mat-card>
+<main class="dashboard-shell">
+  <header class="dashboard-header">
+    <div>
+      <p class="eyebrow">TEAM LEAD WORKSPACE</p>
+      <h1>Projects and tasks</h1>
+      <p class="intro">Create a project, then break the work into tasks for the team.</p>
+    </div>
+    <button mat-stroked-button type="button" (click)="logout()">Logout</button>
+  </header>
 
-  <h1>Team Lead Dashboard</h1>
+  <section class="create-panel" aria-labelledby="create-project-heading">
+    <div>
+      <p class="eyebrow">NEW PROJECT</p>
+      <h2 id="create-project-heading">Start a project</h2>
+    </div>
+    <form [formGroup]="projectForm" (ngSubmit)="createProject()" class="project-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Project name</mat-label>
+        <input matInput formControlName="name" placeholder="e.g. Website refresh">
+        @if (projectForm.controls.name.hasError('required') && projectForm.controls.name.touched) {
+          <mat-error>Enter a project name.</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>What is this project about?</mat-label>
+        <textarea matInput rows="2" formControlName="description"></textarea>
+        @if (projectForm.controls.description.hasError('required') && projectForm.controls.description.touched) {
+          <mat-error>Enter a short description.</mat-error>
+        }
+      </mat-form-field>
+      <button mat-flat-button color="primary" type="submit">Create project</button>
+    </form>
+  </section>
 
-  <p>
-    Welcome Team Lead!
-  </p>
+  <section aria-labelledby="projects-heading">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">DELIVERY BOARD</p>
+        <h2 id="projects-heading">Your projects</h2>
+      </div>
+      <span class="project-count">{{ projects().length }} projects</span>
+    </div>
 
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="logout()"
-  >
-    Logout
-  </button>
+    @if (projects().length === 0) {
+      <div class="empty-state">
+        <h3>No projects yet</h3>
+        <p>Create your first project above and add tasks from its card.</p>
+      </div>
+    } @else {
+      <div class="project-grid">
+        @for (project of projects(); track trackProject($index, project)) {
+          <mat-card class="project-card">
+            <div class="card-heading">
+              <div>
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.description }}</p>
+              </div>
+              <span class="status" [class.completed]="isProjectCompleted(project)">
+                {{ isProjectCompleted(project) ? 'Completed' : 'In progress' }}
+              </span>
+            </div>
 
-</mat-card>
+            <div class="task-summary">
+              <span>{{ completedTaskCount(project) }} of {{ project.tasks.length }} tasks complete</span>
+              <button mat-stroked-button type="button" (click)="openTaskForm(project.id)">Add task</button>
+            </div>
+
+            @if (taskProjectId() === project.id) {
+              <form [formGroup]="taskForm" (ngSubmit)="createTask()" class="task-form">
+                <mat-form-field appearance="outline">
+                  <mat-label>Task title</mat-label>
+                  <input matInput formControlName="title">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Task details</mat-label>
+                  <textarea matInput rows="2" formControlName="description"></textarea>
+                </mat-form-field>
+                <div class="form-actions">
+                  <button mat-flat-button color="primary" type="submit">Add task</button>
+                  <button mat-button type="button" (click)="closeTaskForm()">Cancel</button>
+                </div>
+              </form>
+            }
+
+            <div class="task-list">
+              @if (project.tasks.length === 0) {
+                <p class="no-tasks">No tasks added yet.</p>
+              } @else {
+                @for (task of project.tasks; track trackTask($index, task)) {
+                  <div class="task-row">
+                    <div>
+                      <strong>{{ task.title }}</strong>
+                      <p>{{ task.description }}</p>
+                    </div>
+                    <span class="task-status" [class.completed]="task.status === 'COMPLETED'">
+                      {{ task.status === 'COMPLETED' ? 'Done' : 'Open' }}
+                    </span>
+                  </div>
+                }
+              }
+            </div>
+          </mat-card>
+        }
+      </div>
+    }
+  </section>
+</main>

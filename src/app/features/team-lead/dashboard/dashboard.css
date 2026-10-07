@@ -1,0 +1,188 @@
+.dashboard-shell {
+	max-width: 1180px;
+	margin: 0 auto;
+	padding: 36px 24px 56px;
+}
+
+.dashboard-header,
+.section-heading,
+.card-heading,
+.task-summary,
+.form-actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.dashboard-header {
+	margin-bottom: 32px;
+}
+
+.eyebrow {
+	margin: 0 0 8px;
+	color: #c2410c;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+}
+
+h1,
+h2,
+h3,
+p {
+	margin-top: 0;
+}
+
+h1 {
+	margin-bottom: 8px;
+	font-size: clamp(2rem, 4vw, 3.25rem);
+}
+
+h2 {
+	margin-bottom: 18px;
+}
+
+.intro,
+.card-heading p,
+.task-row p,
+.empty-state p,
+.no-tasks {
+	color: #667085;
+}
+
+.create-panel {
+	display: grid;
+	grid-template-columns: minmax(180px, 0.7fr) 1.5fr;
+	gap: 28px;
+	padding: 24px;
+	margin-bottom: 44px;
+	border: 1px solid #f2c3ad;
+	border-radius: 8px;
+	background: #fff7f2;
+}
+
+.project-form,
+.task-form {
+	display: grid;
+	gap: 12px;
+}
+
+.project-form {
+	grid-template-columns: 1fr 1.5fr auto;
+	align-items: start;
+}
+
+.project-count {
+	color: #667085;
+	font-size: 0.9rem;
+}
+
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 20px;
+}
+
+.project-card {
+	padding: 22px;
+}
+
+.card-heading {
+	align-items: flex-start;
+}
+
+.card-heading h3 {
+	margin-bottom: 8px;
+	font-size: 1.3rem;
+}
+
+.card-heading p,
+.task-row p {
+	margin-bottom: 0;
+	line-height: 1.45;
+}
+
+.status,
+.task-status {
+	flex: 0 0 auto;
+	padding: 5px 9px;
+	border-radius: 999px;
+	background: #fff1e8;
+	color: #9a3412;
+	font-size: 0.75rem;
+	font-weight: 700;
+}
+
+.status.completed,
+.task-status.completed {
+	background: #e7f6ef;
+	color: #18794e;
+}
+
+.task-summary {
+	padding: 18px 0;
+	margin-top: 18px;
+	border-top: 1px solid #dfe5ec;
+	border-bottom: 1px solid #dfe5ec;
+	color: #667085;
+	font-size: 0.9rem;
+}
+
+.task-form {
+	padding: 18px 0;
+}
+
+.task-list {
+	display: grid;
+	gap: 12px;
+	padding-top: 18px;
+}
+
+.task-row {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 12px;
+	border-left: 3px solid #f2c3ad;
+	background: #fafafa;
+}
+
+.task-row strong {
+	display: block;
+	margin-bottom: 4px;
+}
+
+.empty-state {
+	padding: 40px 24px;
+	border: 1px dashed #c7ced8;
+	text-align: center;
+}
+
+@media (max-width: 760px) {
+	.dashboard-shell {
+		padding: 24px 16px 40px;
+	}
+
+	.dashboard-header,
+	.section-heading,
+	.create-panel,
+	.project-form {
+		display: block;
+	}
+
+	.dashboard-header button,
+	.project-form button {
+		margin-top: 14px;
+	}
+
+	.project-form mat-form-field,
+	.project-form button {
+		width: 100%;
+	}
+
+	.project-count {
+		display: block;
+		margin-bottom: 18px;
+	}
+}

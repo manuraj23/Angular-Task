@@ -1,31 +1,19 @@
 <div class="login-container">
-
   <mat-card class="login-card">
-
     <mat-card-header>
-
       <mat-card-title>
         Login
       </mat-card-title>
-
       <mat-card-subtitle>
         Employee Management System
       </mat-card-subtitle>
-
     </mat-card-header>
-
-
     <mat-card-content>
-
       <form
         [formGroup]="loginForm"
         (ngSubmit)="login()"
       >
-
-        <!-- Username -->
-
         <mat-form-field appearance="outline">
-
           <mat-label>
             Username
           </mat-label>
@@ -50,9 +38,6 @@
 
         </mat-form-field>
 
-
-        <!-- Password -->
-
         <mat-form-field appearance="outline">
 
           <mat-label>
@@ -64,23 +49,16 @@
             type="password"
             formControlName="password"
           >
-
           @if (
             loginForm.get('password')?.hasError('required')
             &&
             loginForm.get('password')?.touched
           ) {
-
             <mat-error>
               Password is required
             </mat-error>
-
           }
-
         </mat-form-field>
-
-
-        <!-- Error -->
 
         @if (errorMessage) {
 
@@ -89,9 +67,6 @@
           </div>
 
         }
-
-
-        <!-- Login button -->
 
         <button
           mat-raised-button
